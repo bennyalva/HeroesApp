@@ -1,4 +1,8 @@
 const { types } = require("../types/types");
+// // const state = {
+// //     name: 'benny', 
+// //     logged: true
+// // }
 
 export const authReducer  = (state = {}, action) => {
     switch (action.type) {
