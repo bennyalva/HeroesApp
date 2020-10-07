@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useParams, Redirect } from 'react-router-dom'
 import { getHeroesById } from '../selectors/getHeroeById';
 
 export const HeroesScreen = ({history}) => {
     const { heroeId } =useParams();
-    const heroe = getHeroesById(heroeId);
+    const heroe = useMemo(() => getHeroesById(heroeId), [heroeId]);
+    
     if( !heroe ) {
         return <Redirect to="/" />
     }
@@ -16,7 +17,12 @@ export const HeroesScreen = ({history}) => {
         publisher
     } = heroe;
     const handlerReturn = () =>{
-        history.goBack();
+        if(history.length <= 2){
+            history.push('/');
+        } else {
+            history.goBack();
+        }
+        
     }
     return (
         <div className="row mt-5">
