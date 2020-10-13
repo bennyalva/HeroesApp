@@ -16,7 +16,6 @@ export const SearchScreen = ({history}) => {
             return;
         }
         history.push(`?q=${ heroeDesc }`)
-        console.log('heroe: ', heroeDesc)
     }
     return (
         <div>
